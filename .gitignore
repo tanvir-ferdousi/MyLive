@@ -3,6 +3,9 @@
 .classpath
 .project
 
+# IDEA
+.idea/
+
 # Log file
 *.log
 

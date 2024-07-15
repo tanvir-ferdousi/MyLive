@@ -217,10 +217,10 @@ public class AMF0 {
 					log.debug("end MAP / OBJECT, found object end marker [000009]");
 					break;
 				}
-				if (count > 0 && i++ == count) {
-					log.debug("stopping map decode after reaching count: {}", count);
-					break;
-				}
+//				if (count > 0 && i++ == count) {
+//					log.debug("stopping map decode after reaching count: {}", count);
+//					break;
+//				}
 				map.put(decodeString(in), decode(in));
 			}
 			return map;

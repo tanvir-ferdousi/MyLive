@@ -111,7 +111,15 @@ public class RtmpMessageHandler extends SimpleChannelInboundHandler<RtmpMessage>
 		if ("@setDataFrame".equals(name)) {
 			// save on metadata
 			Map<String, Object> properties = (Map<String, Object>) msg.getData().get(2);
-			properties.remove("filesize");
+
+			log.info("Before removal: " + properties);
+
+//			properties.remove("filesize");
+
+			properties.keySet().removeIf(key -> key.contains("audio"));
+			properties.keySet().removeIf(key -> key.contains("stereo"));
+
+			log.info("After removal: " + properties);
 			
 			String encoder = (String)properties.get("encoder");
 			if(encoder!=null && encoder.contains("obs")) {
